@@ -753,14 +753,19 @@
     const st = x => x.s != null ? x.s : x.state;
 
     // v9.1: historia alarmow z KOTLA (firmware >= 2.25: encje "Alarm wpis 1..20" = "kod N (opis)|poczatek|koniec"); rekorder HA tylko jako zapas dla starszego firmware
+    // v9.2: wpisy skonsolidowane w 1 encje "Historia alarmow" (atrybuty ah_0..ah_19) zamiast 20 osobnych
+    // encji - sprawdzamy oba ksztalty (stara postac zostaje jako zapas, gdyby ktos byl jeszcze na starym firmware).
     C.prototype._alFromSensors = function () {
       const stt = this._hass && this._hass.states; if (!stt) return null;
       const out = []; let found = false;
+      const push = txt3 => { const p = String(txt3).split('|'); if (p.length < 3) return; found = true; const start = num(p[1]), end = num(p[2]); if (!(start > 1e9)) return; out.push({ start, end: end > 1e9 && end >= start ? end : 0, txt: p[0] }); };
       for (const id in stt) {
-        if (!/^sensor\..*alarm_wpis_\d+$/.test(id)) continue; found = true;
-        const p = String(stt[id].state).split('|'); if (p.length < 3) continue;
-        const start = num(p[1]), end = num(p[2]); if (!(start > 1e9)) continue;
-        out.push({ start, end: end > 1e9 && end >= start ? end : 0, txt: p[0] });
+        if (/^sensor\..*historia_alarmow$/.test(id)) {
+          const attrs = stt[id].attributes || {};
+          for (let i = 0; i < MAXAL; i++) { const v = attrs['ah_' + i]; if (v != null && v !== '-') push(v); }
+          continue;
+        }
+        if (/^sensor\..*alarm_wpis_\d+$/.test(id)) push(stt[id].state);
       }
       return found ? out.sort((x, y) => y.start - x.start).slice(0, MAXAL) : null;
     };
@@ -1035,9 +1040,22 @@
       sch_boil: '000000 000000 000000 000000 000000 000000 000000', sch_co: '03FC3C 03FC3C 03FC3C 03FC3C 03FC3C 03FC3C 03FC3C', sch_cwu: 'FFFFFF FFFFFF FFFFFF FFFFFF FFFFFF FFFFFF FFFFFF'
     };
     window.__teklaDemo = DEMO;
+    const SCH_ROLES = ['sch_boil', 'sch_co', 'sch_cwu'];
     const os0 = C.prototype._s;
     C.prototype._s = function (k) {
-      if (this._cfg && this._cfg.demo) { const v = DEMO[k]; return v === undefined ? undefined : { state: String(v), attributes: {} }; }
+      if (this._cfg && this._cfg.demo) {
+        const v = DEMO[k];
+        if (v === undefined) return undefined;
+        // Harmonogramy (rejestry) sa od konsolidacji encji: stan = liczba dni, maski godzin w atrybutach
+        // d0..d6 - jak realne urzadzenie - zeby demo pokazywalo te same paski co prawdziwa encja.
+        if (SCH_ROLES.includes(k)) {
+          const days = String(v).trim().split(/\s+/);
+          const attrs = {}; let n = 0;
+          days.forEach((h, i) => { attrs['d' + i] = h; if (h !== '------') n++; });
+          return { state: String(n), attributes: attrs };
+        }
+        return { state: String(v), attributes: {} };
+      }
       return os0.call(this, k);
     };
     const sc2 = C.prototype.setConfig;
