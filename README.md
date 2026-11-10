@@ -1,9 +1,8 @@
 # TeklaPelletClassic-card
 
-Karta Lovelace dla Home Assistant – replika panelu kotła Tekla/Estyma Igneo Touch,
-wyłącznie dla integracji [TeklaPelletCAN](https://github.com/GieOeRZet/TeklaPelletCan)
-(urządzenie wyszukiwane w rejestrze HA po domenie integracji, encje dobierane
-automatycznie po ID punktu – bez ręcznego mapowania).
+Karta Lovelace dla Home Assistant – replika panelu kotła Tekla/Estyma Igneo Touch. Współpracuje z integracją
+TeklaPelletCAN (urządzenie wyszukiwane w rejestrze HA po domenie integracji, encje dobierane automatycznie po ID
+punktu – bez ręcznego mapowania).
 
 ## Instalacja (HACS)
 
@@ -14,11 +13,9 @@ automatycznie po ID punktu – bez ręcznego mapowania).
 
 ## Zależności
 
-Ten plugin ładuje runtime z `pelletcan-card.js` → `tekla-panel-card.js`
-(silnik renderowania, ten sam co oryginalny projekt PelletCAN) + tłumaczenia
-z `pelletcan-lang.js`. Wszystko wchodzi w skład tego repozytorium – nie trzeba
-instalować niczego dodatkowego.
+Ten plugin ładuje runtime z `pelletcan-card.js` → `tekla-panel-card.js` (silnik renderowania) + tłumaczenia z
+`pelletcan-lang.js`. Wszystko wchodzi w skład tego repozytorium – nie trzeba instalować niczego dodatkowego.
 
 ## Licencja
 
-Jak w [TeklaPelletCan](https://github.com/GieOeRZet/TeklaPelletCan) – zobacz [LICENSE](LICENSE).
+Zobacz [LICENSE](LICENSE).
