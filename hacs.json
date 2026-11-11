@@ -1,6 +1,6 @@
 {
   "name": "TeklaPelletClassic-card",
-  "filename": "teklapelletcan-card.js",
+  "filename": "teklapelletclassic-card.js",
   "render_readme": true,
   "homeassistant": "2024.12.0"
 }
