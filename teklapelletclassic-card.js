@@ -107,7 +107,7 @@
   // nie trafia na dysk HA, wiec pod /hacsfiles/ ladujemy z CDN (ten sam wzorzec co img/panel w
   // teklapelletclassic-engine.js); przy instalacji recznej (katalog obok pliku karty) - sciezka lokalna ====
   const B64_BASE = DIR.includes('/hacsfiles/') ? 'https://cdn.jsdelivr.net/gh/GieOeRZet/TeklaPelletClassic-card@main/img_b64/' : (DIR + 'img_b64/');
-  const IMG_IDS = [3, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 17, 19, 20, 36, 37, 38, 40, 41, 42, 48, 49, 50, 51, 52, 53, 54, 65, 66, 67, 70, 75, 76, 77, 79, 102, 103, 104, 110, 112, 113, 114, 115, 117, 118, 119, 122, 128, 138, 139, 140, 141, 142, 143, 144, 148, 149, 150, 157, 160, 161, 163, 165, 167, 168, 169, 174, 184, 185];
+  const IMG_IDS = [3, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 17, 19, 20, 23, 36, 37, 38, 40, 41, 42, 48, 49, 50, 51, 52, 53, 54, 65, 66, 67, 70, 75, 76, '76b', 77, 79, 102, 103, 104, 110, 112, 113, 114, 115, 117, 118, 119, 122, 128, 138, 139, 140, 141, 142, 143, 144, 148, 149, 150, 157, 160, 161, 163, 165, 167, 168, 169, 174, 184, 185];
   const ASSET_B64 = {};
   await Promise.all(IMG_IDS.map(async n => {
     try {
@@ -178,7 +178,8 @@
       .sq{position:relative;display:inline-block;line-height:0}.sq img{position:absolute;left:0;top:0;width:100%;height:100%;opacity:0;mix-blend-mode:screen;animation:spf4 2s linear infinite}.sq img:nth-child(2){animation-delay:.5s}.sq img:nth-child(3){animation-delay:1s}.sq img:nth-child(4){animation-delay:1.5s}
       @keyframes spf4{0%,25%{opacity:1}25.01%,100%{opacity:0}}
       .ftk.pk{background:url(${U(54)}) 0 0/100% 100% no-repeat!important;border:0!important}.ftk.pk .fth,.ftk.pk .fhd{display:none}
-      .cell{background:url(${U(76)}) center/100% 100% no-repeat!important;border-left:.3cqw solid #5a5e65!important}
+      .cell{background:url(${U('76b')}) center/100% 100% no-repeat!important;border-left:0!important}
+      .cell:not(:first-child)::before{content:'';position:absolute;left:0;top:0;bottom:0;width:1.67cqw;background:url(${U(23)}) center/100% 100% no-repeat}
       .cell:has(.ind){background:url(${U(75)}) center/100% 100% no-repeat!important}
       .ind{background:transparent!important;box-shadow:none!important}
       .ind.g{background:#86e61f!important;box-shadow:0 0 1.4cqw #86e61f!important}
