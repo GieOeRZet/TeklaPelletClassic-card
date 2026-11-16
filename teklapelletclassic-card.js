@@ -178,8 +178,7 @@
       .sq{position:relative;display:inline-block;line-height:0}.sq img{position:absolute;left:0;top:0;width:100%;height:100%;opacity:0;mix-blend-mode:screen;animation:spf4 2s linear infinite}.sq img:nth-child(2){animation-delay:.5s}.sq img:nth-child(3){animation-delay:1s}.sq img:nth-child(4){animation-delay:1.5s}
       @keyframes spf4{0%,25%{opacity:1}25.01%,100%{opacity:0}}
       .ftk.pk{background:url(${U(54)}) 0 0/100% 100% no-repeat!important;border:0!important}.ftk.pk .fth,.ftk.pk .fhd{display:none}
-      .cell{background:url(${U('76b')}) center/100% 100% no-repeat!important;border-left:0!important}
-      .cell:not(:first-child)::before{content:'';position:absolute;left:0;top:0;bottom:0;width:1.67cqw;background:url(${U(23)}) center/100% 100% no-repeat}
+      .cell{background:url(${U('76b')}) center/100% 100% no-repeat!important;border-left:.3cqw solid #5a5e65!important}
       .cell:has(.ind){background:url(${U(75)}) center/100% 100% no-repeat!important}
       .ind{background:transparent!important;box-shadow:none!important}
       .ind.g{background:#86e61f!important;box-shadow:0 0 1.4cqw #86e61f!important}
