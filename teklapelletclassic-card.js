@@ -206,6 +206,8 @@
       .tag:active{background-image:url(${U(7)})!important}
       .box{background:url(${U(6)}) center/100% 100% no-repeat!important;border:0!important}
       .box:active{background-image:url(${U(7)})!important}
+      .opt{background:url(${U(6)}) center/100% 100% no-repeat!important;border:0!important;border-radius:0!important;box-shadow:none!important}
+      .opt.on{background-image:url(${U(7)})!important;color:#fff!important}
       .qok{background:url(${U(110)}) center/100% 100% no-repeat!important;border:0!important;border-radius:0!important;box-shadow:none!important;color:transparent!important}
       .bpm{background:url(${U(104)}) center/35% 35% no-repeat,url(${U(168)}) center/100% 100% no-repeat!important;border:0!important;border-radius:0!important;box-shadow:none!important}
       .bpm.pl{background:url(${U(119)}) center/35% 35% no-repeat,url(${U(168)}) center/100% 100% no-repeat!important}
