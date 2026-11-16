@@ -200,7 +200,7 @@
       .tgq.on i,.row .tgq.on i{left:77.778%!important;right:auto!important}
       .sl[data-act="slider"],.sl[data-act="bmslide"],.sl[data-act="cmslide"]{background:url(${U(163)}) center/100% 100% no-repeat!important;box-shadow:none!important}
       .sl[data-act="slider"] b,.sl[data-act="bmslide"] b,.sl[data-act="cmslide"] b{background-image:url(${U(165)})!important;background-repeat:no-repeat!important}
-      .sl[data-act="slider"] i{width:3.9cqw!important;height:3.9cqw!important;margin-left:-1.95cqw!important;top:-0.85cqw!important;border-radius:999px!important;background:url(${U(70)}) center/100% 100% no-repeat!important;box-shadow:none!important}
+      .sl[data-act="slider"] i{width:5.5cqw!important;height:5.5cqw!important;margin-left:-2.75cqw!important;top:-1.65cqw!important;border-radius:999px!important;background:url(${U(70)}) center/100% 100% no-repeat!important;box-shadow:none!important}
       .tag{background:url(${U(6)}) center/100% 100% no-repeat!important;border:0!important}
       .tag:active{background-image:url(${U(7)})!important}
       .box{background:url(${U(6)}) center/100% 100% no-repeat!important;border:0!important}
