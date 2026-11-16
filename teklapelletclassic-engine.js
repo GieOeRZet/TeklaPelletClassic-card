@@ -1010,7 +1010,9 @@
         .cell:has(.ind){background:url(${U(75)}) center/100% 100% no-repeat!important}
         .cell>.mn{position:absolute;inset:0;display:block}
         .cell[data-go=heat]>.radi{top:5.47cqw;left:calc(50% + 0.5cqw);display:block}.cell[data-go=heat] .radi svg{width:5.02cqw!important;height:6.14cqw!important;display:block}
+        .cell[data-go=heat] .radi img{width:6.99cqw!important;height:6.14cqw!important;display:block}
         .cell[data-go=heat] .radi sup{right:auto;left:calc(100% + .9cqw);top:-.1cqw;font-size:2.7cqw;line-height:1}
+        .ind.g{background:#86e61f!important;box-shadow:0 0 1.4cqw #86e61f!important}
         .ind.pulse{background:#FBAD32!important;box-shadow:0 0 1.4cqw #FBAD32!important;animation:indpulse 1.1s steps(1) infinite}
         .ind.pulse-g{background:#86e61f!important;box-shadow:0 0 1.4cqw #86e61f!important;animation:indpulse 1.1s steps(1) infinite}
         .ind.pulse-r{background:#ff3b30!important;box-shadow:0 0 1.4cqw #ff3b30!important;animation:indpulse 1.1s steps(1) infinite}
@@ -1034,7 +1036,27 @@
         .cell[data-act=fuel]>svg,.cell[data-act=fuel]>img{width:6.66cqw!important;height:5.52cqw!important;top:6.75cqw;left:calc(50% + 0.04cqw)}
         .cell[data-go=water]>svg.ic2,.cell[data-go=water]>img.ic2{width:6.83cqw!important;height:7.32cqw!important;top:4.88cqw;left:calc(50% + 0.16cqw)}
         .cell[data-act=quick]>svg.ic2,.cell[data-act=quick]>img.ic2{width:7.59cqw!important;height:7.41cqw!important;top:4.88cqw;left:calc(50% + 0.24cqw)}
-        .cell>svg,.cell>img,.cell>.radi{position:absolute!important;left:50%;margin:0!important;transform:translateX(-50%)}` : '');
+        .cell>svg,.cell>img,.cell>.radi{position:absolute!important;left:50%;margin:0!important;transform:translateX(-50%)}
+        .h2{background:url(${U(79)}) center/100% 100% no-repeat!important;height:9.37cqw!important}
+        .tag{background:url(${U(6)}) center/100% 100% no-repeat!important;border:0!important}
+        .tag:active{background-image:url(${U(7)})!important}
+        .tag .chipb{display:block;width:7cqw;height:3cqw;background-repeat:no-repeat;background-size:129.6% 336.4%;background-position:50% 50%;align-self:flex-start;margin-top:1.2cqw}
+        .box{background:url(${U(6)}) center/100% 100% no-repeat!important;border:0!important}
+        .box:active{background-image:url(${U(7)})!important}
+        .brow>div{border-left:.3cqw solid #5a5e65!important;background:linear-gradient(#5a5e65,#3d4147)!important}
+        .brow .cg{background:url(${U(160)}) center/100% 100% no-repeat!important}
+        .brow .cg:active{background-image:url(${U(161)})!important}
+        .bpm{background:url(${U(104)}) center/35% 35% no-repeat,url(${U(168)}) center/100% 100% no-repeat!important;border:0!important;border-radius:0!important;box-shadow:none!important}
+        .bpm.pl{background:url(${U(119)}) center/35% 35% no-repeat,url(${U(168)}) center/100% 100% no-repeat!important}
+        .bpm:active{background-image:url(${U(104)}),url(${U(169)})!important}
+        .bpm.pl:active{background-image:url(${U(119)}),url(${U(169)})!important}
+        .bpm i,.bpm i+i{display:none!important}
+        .qok{background:url(${U(110)}) center/100% 100% no-repeat!important;border:0!important;border-radius:0!important;box-shadow:none!important;color:transparent!important}
+        .qbg{background:url(${U(114)}) center/100% 100% no-repeat!important;border:0!important;border-radius:0!important;box-shadow:none!important;position:relative;overflow:hidden}
+        .qbg::before,.qbg::after{content:'';position:absolute;top:0;height:100%;aspect-ratio:10/242;background:center/100% 100% no-repeat}
+        .qbg::before{left:0;background-image:url(${U(112)})}
+        .qbg::after{right:0;background-image:url(${U(113)})}
+        .qd{background:rgba(26,28,31,.75)!important}` : '');
       };
       // od teraz jeden, pelny zestaw grafik panelu (bez opcji "domyslne") - FULL zawsze prawda
       const FULL = () => true;
@@ -1379,7 +1401,7 @@
         const c = this._cfg, ids = this._ids(), pf = pfOf(c, ids), keys = keysAll(), ex = c.entities || {};
         const d = {
           screen: c.screen || 'main', language: ({ dk: 'da', se: 'sv', cz: 'cs', est: 'et' }[String(c.language || 'pl').toLowerCase()] || c.language || 'pl'), device: c.entity_prefix ? String(c.entity_prefix) : 'auto',
-          esphome_node: c.esphome_node || '', grafiki: c.grafiki === 'domyslne' ? 'domyslne' : 'pelne', boiler_image: [11, 12, 13, 14].includes(+c.boiler_image) ? String(c.boiler_image) : '13', lite: !!c.lite, demo: !!c.demo, mirror_mode: typeof c.mirror === 'boolean' ? (c.mirror ? 'on' : 'off') : 'auto',
+          esphome_node: c.esphome_node || '', boiler_image: [11, 12, 13, 14].includes(+c.boiler_image) ? String(c.boiler_image) : '13', lite: !!c.lite, demo: !!c.demo, mirror_mode: typeof c.mirror === 'boolean' ? (c.mirror ? 'on' : 'off') : 'auto',
         };
         Object.keys(keys).forEach(r => { d['e_' + r] = ex[r] || (ids.length ? findRole(ids, r, keys[r], pf, this._hass.states) : ''); });   // pola od razu pokazuja wykryte encje
         return d;
@@ -1407,8 +1429,7 @@
             { name: 'screen', label: 'Ekran startowy karty', selector: { select: { mode: 'dropdown', options: D.SCREEN_OPTS.map(o => ({ value: o[0], label: o[1] })) } } },
             { name: 'language', label: 'Język / Language', selector: { select: { mode: 'dropdown', options: [{ value: 'auto', label: 'Auto (język Home Assistant)' }].concat(Object.keys((window.__pcLang || {}).names || {}).map(k => ({ value: k, label: window.__pcLang.names[k] }))) } } },
             { name: 'device', label: 'Urządzenie (prefiks encji)', selector: { select: { mode: 'dropdown', custom_value: true, options: [{ value: 'auto', label: 'Automatycznie' + (devs.length ? ' (' + pf + ')' : '') }].concat(devs.map(d => ({ value: d.p, label: d.p }))) } } },
-            { name: 'grafiki', label: 'Grafiki panela', selector: { select: { mode: 'dropdown', options: [{ value: 'domyslne', label: 'Domyślne (tylko zbiornik paliwa)' }, { value: 'pelne', label: 'Pełne (wentylator, podajniki, zawór, grzałka, kocioł, palnik)' }] } } },
-            { name: 'boiler_image', label: 'Obraz kotła (grafiki pełne)', selector: { select: { mode: 'dropdown', options: [{ value: '11', label: 'Typ 11' }, { value: '12', label: 'Typ 12' }, { value: '13', label: 'Typ 13 (domyślny)' }, { value: '14', label: 'Typ 14' }] } } },
+            { name: 'boiler_image', label: 'Obraz kotła', selector: { select: { mode: 'dropdown', options: [{ value: '11', label: 'Typ 11' }, { value: '12', label: 'Typ 12' }, { value: '13', label: 'Typ 13 (domyślny)' }, { value: '14', label: 'Typ 14' }] } } },
           ],
         }, {
           type: 'expandable', title: 'Zaawansowane (zwykle zbędne)', flatten: true, schema: [
@@ -1450,7 +1471,6 @@
         else Object.keys(keys).forEach(r => { const x = v['e_' + r]; if (x) entities[r] = x; });
         if (Object.keys(entities).length) cfg.entities = entities; else delete cfg.entities;
         const nd = (v.esphome_node || '').trim(); if (nd) cfg.esphome_node = nd; else delete cfg.esphome_node;
-        if (v.grafiki === 'domyslne') cfg.grafiki = 'domyslne'; else delete cfg.grafiki;   // pelne = domyślne w karcie
         if (v.boiler_image && v.boiler_image !== '13') cfg.boiler_image = +v.boiler_image; else delete cfg.boiler_image;
         if (v.lite) cfg.lite = true; else delete cfg.lite;
         if (v.demo) cfg.demo = true; else delete cfg.demo;
