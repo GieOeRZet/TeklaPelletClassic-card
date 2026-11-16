@@ -225,7 +225,8 @@
       .sl.sl-v b{background-image:url(${U(165)})!important;background-repeat:no-repeat!important}
       .sl.sl-t b{background-image:url(${U(167)})!important;background-repeat:no-repeat!important}
       .tag .chipb{display:block;width:7cqw;height:3cqw;background-repeat:no-repeat;background-size:129.6% 336.4%;background-position:50% 50%;align-self:flex-start;margin-top:1.2cqw}
-      .cell[data-go=heat]>.radi{top:5.47cqw;left:calc(50% + -0.56cqw);display:block}.cell[data-go=heat] .radi svg,.cell[data-go=heat] .radi img{width:5.02cqw!important;height:6.14cqw!important;display:block}
+      .cell[data-go=heat]>.radi{top:5.47cqw;left:calc(50% + -0.56cqw);display:block}.cell[data-go=heat] .radi svg{width:5.02cqw!important;height:6.14cqw!important;display:block}
+      .cell[data-go=heat] .radi img{width:6.99cqw!important;height:6.14cqw!important;display:block}
       .cell[data-go=heat] .radi sup{right:auto;left:calc(100% + .9cqw);top:-.1cqw;font-size:2.7cqw;line-height:1}
       .cell>svg,.cell>img,.cell>.radi{position:absolute!important;left:50%;margin:0!important;transform:translateX(-50%)}
       .cell[data-act=fuel]>svg,.cell[data-act=fuel]>img{width:6.66cqw!important;height:5.52cqw!important;top:6.75cqw;left:calc(50% + 0.04cqw)}
