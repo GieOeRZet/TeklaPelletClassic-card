@@ -193,6 +193,7 @@
       .screen{background:#282828!important}
       .s-main,.s-water,.s-heat,.s-burn,.s-alarm,.is-sub{background:#282828!important}
       .tgq,.row .tgq{background:#4a4e55 url(${U(184)}) 0 0/100% 100% no-repeat!important;box-shadow:none!important;border-radius:999px!important;height:auto!important;aspect-ratio:45/20}
+      .row .tgq{position:relative!important;left:auto!important;top:auto!important;width:7.4cqw!important;margin-left:auto!important;flex:none!important}
       .tgq.on,.row .tgq.on{background-image:url(${U(185)})!important}
       .tgq::before,.tgq::after,.row .tgq::before,.row .tgq::after{display:none!important}
       .row .tgq:not(.on)::after,.row .tgq.on::before,.row .tgq:not(.on)::before,.row .tgq.on::after{content:none!important;display:none!important;border:0!important;width:0!important;height:0!important}
