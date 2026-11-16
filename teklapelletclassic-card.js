@@ -49,7 +49,7 @@
   class TeklaPelletCanCard extends Base {
     setConfig(c) {
       if (!c || typeof c !== 'object') throw new Error('Nieprawidłowa konfiguracja karty');
-      this._tcfg = Object.assign({ grafiki: 'pelne', boiler_image: '13', screen: 'main', language: 'auto' }, c);
+      this._tcfg = Object.assign({ boiler_image: '13', screen: 'main', language: 'auto' }, c);
       this._resolvedDevId = undefined;   // wymusza ponowne rozwiazanie urzadzenia/prefiksu (ale nie na kazdym tyknieciu hass!)
       if (this._lastHass) this._apply(this._lastHass); else super.setConfig(this._innerConfig({}));
     }
@@ -60,7 +60,13 @@
         service_domain: DOMAIN,
         screen: t.screen || 'main',
         language: t.language || 'auto',
-        grafiki: t.grafiki === 'domyslne' ? 'domyslne' : 'pelne',
+        // ZAWSZE 'domyslne' do bazowej karty: wylacza natywny modul "pelnych grafik" silnika
+        // (teklapelletclassic-engine.js, gate FULL()), ktory implementuje DOKLADNIE te same rzeczy
+        // (ikony/animacje/CSS .tgq,.sl,.tr .tb) co ta nasza karta ponizej - wlaczony razem z naszym
+        // wlasnym mechanizmem powodowal podwojne, konkurujace ze soba definicje CSS dla tych samych
+        // elementow (np. .sl i raz 6.5cqw z silnika, raz 5.5cqw od nas - zalezne od kolejnosci w
+        // arkuszu, zrodlo kilku "czasem wyglada inaczej" bledow z tej sesji).
+        grafiki: 'domyslne',
         boiler_image: ['11', '12', '13', '14'].includes(String(t.boiler_image)) ? String(t.boiler_image) : '13',
       }, extra);
     }
@@ -99,7 +105,7 @@
     set hass(h) { this._lastHass = h; if (this._tcfg) this._apply(h); }
     get hass() { return this._lastHass; }
     static getConfigElement() { return document.createElement('teklapelletclassic-card-editor'); }
-    static getStubConfig() { return { screen: 'main', grafiki: 'pelne' }; }
+    static getStubConfig() { return { screen: 'main' }; }
   }
 
   // ==== PRAWDZIWE GRAFIKI PANELU - ladowanie assetow (img_b64/N.b64, ta sama bitmapa co img/panel/NNN.png).
@@ -622,7 +628,7 @@
 
   // ---- edytor: tylko urządzenie (gdy >1), grafiki, obraz kotła, język, ekran – bez ręcznego mapowania encji ----
   class TeklaPelletCanCardEditor extends HTMLElement {
-    setConfig(c) { this._cfg = Object.assign({ grafiki: 'pelne', boiler_image: '13', screen: 'main', language: 'auto' }, c || {}); this._draw(); }
+    setConfig(c) { this._cfg = Object.assign({ boiler_image: '13', screen: 'main', language: 'auto' }, c || {}); this._draw(); }
     set hass(h) { this._hass = h; this._draw(); }
     _draw() {
       if (!this._cfg) return;
@@ -641,8 +647,7 @@
       const schema = [
         { name: 'screen', label: 'Ekran startowy karty', selector: { select: { mode: 'dropdown', options: (D.SCREEN_OPTS || []).map(o => ({ value: o[0], label: o[1] })) } } },
         { name: 'language', label: 'Język / Language', selector: { select: { mode: 'dropdown', options: [{ value: 'auto', label: 'Auto (język Home Assistant)' }].concat(Object.keys((window.__pcLang || {}).names || {}).map(k => ({ value: k, label: window.__pcLang.names[k] }))) } } },
-        { name: 'grafiki', label: 'Grafiki panela', selector: { select: { mode: 'dropdown', options: [{ value: 'pelne', label: 'Pełne (domyślne, oryginalne grafiki Estymy)' }, { value: 'domyslne', label: 'Domyślne karty (tylko zbiornik paliwa)' }] } } },
-        { name: 'boiler_image', label: 'Obraz kotła (grafiki pełne)', selector: { select: { mode: 'dropdown', options: [{ value: '11', label: 'Typ 11' }, { value: '12', label: 'Typ 12' }, { value: '13', label: 'Typ 13' }, { value: '14', label: 'Typ 14' }] } } },
+        { name: 'boiler_image', label: 'Obraz kotła', selector: { select: { mode: 'dropdown', options: [{ value: '11', label: 'Typ 11' }, { value: '12', label: 'Typ 12' }, { value: '13', label: 'Typ 13' }, { value: '14', label: 'Typ 14' }] } } },
       ];
       if (devs.length > 1) {
         schema.unshift({
@@ -656,7 +661,7 @@
     }
     _changed(v) {
       const cfg = Object.assign({}, this._cfg, {
-        screen: v.screen || 'main', language: v.language || 'auto', grafiki: v.grafiki === 'domyslne' ? 'domyslne' : 'pelne',
+        screen: v.screen || 'main', language: v.language || 'auto',
         boiler_image: v.boiler_image || '13',
       });
       if (v.device_id && v.device_id !== 'auto') cfg.device_id = v.device_id; else delete cfg.device_id;
