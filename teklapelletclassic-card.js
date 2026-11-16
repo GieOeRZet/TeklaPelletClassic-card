@@ -215,10 +215,15 @@
       .alar.bk img{width:45%;height:45%;object-fit:contain;display:block;margin:auto}
       .fbt{background:url(${U(168)}) center/100% 100% no-repeat!important;border:0!important;border-radius:0!important;box-shadow:none!important;color:transparent!important}
       .fbt:active{background-image:url(${U(169)})!important}
-      .fbt[data-d="1"]{background-image:url(${U(119)}),url(${U(168)})!important;background-size:35% 35%,100% 100%!important;background-repeat:no-repeat!important;background-position:center,center!important}
-      .fbt[data-d="1"]:active{background-image:url(${U(119)}),url(${U(169)})!important}
-      .fbt[data-d="-1"]{background-image:url(${U(104)}),url(${U(168)})!important;background-size:35% 35%,100% 100%!important;background-repeat:no-repeat!important;background-position:center,center!important}
-      .fbt[data-d="-1"]:active{background-image:url(${U(104)}),url(${U(169)})!important}
+      .fbt:not(.fma)[data-d="1"]{background-image:url(${U(119)}),url(${U(168)})!important;background-size:35% 35%,100% 100%!important;background-repeat:no-repeat!important;background-position:center,center!important}
+      .fbt:not(.fma)[data-d="1"]:active{background-image:url(${U(119)}),url(${U(169)})!important}
+      .fbt:not(.fma)[data-d="-1"]{background-image:url(${U(104)}),url(${U(168)})!important;background-size:35% 35%,100% 100%!important;background-repeat:no-repeat!important;background-position:center,center!important}
+      .fbt:not(.fma)[data-d="-1"]:active{background-image:url(${U(104)}),url(${U(169)})!important}
+      .fbt.fma[data-d="1"]{background-image:url(${U(5)}),url(${U(168)})!important;background-size:35% 35%,100% 100%!important;background-repeat:no-repeat!important;background-position:center,center!important}
+      .fbt.fma[data-d="1"]:active{background-image:url(${U(5)}),url(${U(169)})!important}
+      .fbt.fma[data-d="-1"]{background-image:url(${U(3)}),url(${U(168)})!important;background-size:35% 35%,100% 100%!important;background-repeat:no-repeat!important;background-position:center,center!important}
+      .fbt.fma[data-d="-1"]:active{background-image:url(${U(3)}),url(${U(169)})!important}
+      .fbt.fma svg{display:none!important}
       .cell>.mn{position:absolute;inset:0;display:block}
       .bpm:not(.sm){background:url(${U(102)}) center/100% 100% no-repeat!important}
       .bpm:not(.sm):active{background-image:url(${U(103)})!important}
