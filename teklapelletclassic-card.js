@@ -102,12 +102,16 @@
     static getStubConfig() { return { screen: 'main', grafiki: 'pelne' }; }
   }
 
-  // ==== PRAWDZIWE GRAFIKI PANELU - ladowanie assetow (img_b64/N.b64, ta sama bitmapa co img/panel/NNN.png) ====
+  // ==== PRAWDZIWE GRAFIKI PANELU - ladowanie assetow (img_b64/N.b64, ta sama bitmapa co img/panel/NNN.png).
+  // HACS przy instalacji karty kopiuje lokalnie TYLKO plik JS - katalog img_b64/ (tak samo jak img/) nigdy
+  // nie trafia na dysk HA, wiec pod /hacsfiles/ ladujemy z CDN (ten sam wzorzec co img/panel w
+  // teklapelletclassic-engine.js); przy instalacji recznej (katalog obok pliku karty) - sciezka lokalna ====
+  const B64_BASE = DIR.includes('/hacsfiles/') ? 'https://cdn.jsdelivr.net/gh/GieOeRZet/TeklaPelletClassic-card@main/img_b64/' : (DIR + 'img_b64/');
   const IMG_IDS = [3, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 17, 19, 20, 36, 37, 38, 40, 41, 42, 48, 49, 50, 51, 52, 53, 54, 65, 66, 67, 70, 75, 76, 77, 79, 102, 103, 104, 110, 112, 113, 114, 115, 117, 118, 119, 122, 128, 138, 139, 140, 141, 142, 143, 144, 148, 149, 150, 157, 160, 161, 163, 165, 167, 168, 169, 174, 184, 185];
   const ASSET_B64 = {};
   await Promise.all(IMG_IDS.map(async n => {
     try {
-      const r = await fetch(DIR + 'img_b64/' + n + '.b64');
+      const r = await fetch(B64_BASE + n + '.b64');
       const txt = (await r.text()).trim();
       ASSET_B64[n] = `data:image/png;base64,${txt}`;
     } catch (e) {
