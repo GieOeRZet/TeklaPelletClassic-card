@@ -34,6 +34,22 @@ całym Home Assistant), ta karta wyszukuje urządzenie **przez rejestr urządze�
 masz wiele różnych urządzeń pelletowych podłączonych na raz. Prefiks encji dla znalezionego urządzenia jest
 wyliczany automatycznie.
 
+## Co można zrobić w karcie
+
+Karta jest ekran po ekranie, przycisk po przycisku taka sama jak fizyczny panel Igneo Touch — wszystko, co da się
+zrobić na panelu kotła, da się zrobić i tutaj:
+
+- **Kocioł / Palnik / CO / CWU** — podgląd temperatur, zmiana trybu, nastawy (temperatura zadana, krzywa
+  grzewcza), tak jak w menu panelu.
+- **PROGRAM** — harmonogram tygodniowy (CO/CWU), identyczny układ pasków godzinowych jak na panelu.
+- **Test wyjść** — test poszczególnych wyjść sterownika (dmuchawa, podajnik, pompy, mieszacze) — tylko od
+  poziomu dostępu 2.
+- **Alarmy** — historia alarmów kotła z potwierdzaniem.
+- **Poziom menu (PIN)** — ten sam dwupoziomowy PIN co na panelu (0900/0999); poziom 1/2 odblokowuje dalsze opcje
+  serwisowe bez wychodzenia z karty.
+- **Tryb lite** (`lite: true` w konfiguracji YAML) — uproszczona wersja bez menu poziomów, do zastosowań typu
+  "tylko podgląd/szybka zmiana trybu" na mniejszym dashboardzie.
+
 ## Konfiguracja karty (edytor wizualny)
 
 | Opcja | Co robi | Domyślnie |
